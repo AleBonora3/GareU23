@@ -1,0 +1,109 @@
+extends layout
+
+block content
+  #content
+    h1 Problemi comuni
+    table#problemi
+        tr
+            td 
+                i.fa-solid.fa-address-card
+            td  
+                a(href="#registrazione") Ho problemi con la registrazione
+        tr 
+            td 
+                i.fa-solid.fa-right-to-bracket 
+            td
+                a(href="#login") Ho problemi con il login
+        tr  
+            td 
+                i.fa-solid.fa-envelope
+            td 
+                a(href="mailto:alebonora2003@gmail.com") Contatta l'assistenza
+
+    section#registrazione
+    h2 Problemi con la Registrazione
+    ul
+        li
+            strong Impossibile completare la registrazione
+            ul
+                li Verifica di aver inserito correttamente tutti i campi obbligatori nel modulo di registrazione.
+                li Assicurati che la password rispetti i requisiti minimi di sicurezza (ad esempio, deve contenere almeno 6 caratteri).
+                li Controlla se il nome utente inserito è valido e unico.
+                li Controlla se ci sono messaggi di errore specifici sul motivo del fallimento della registrazione.
+        li
+            strong Ricevo errori durante il processo di registrazione
+            ul
+                li Leggi attentamente gli errori mostrati durante la registrazione. Spesso, questi messaggi contengono informazioni utili su cosa sia andato storto.
+                li Assicurati che le informazioni inserite rispettino i requisiti specifici del sito o dell'applicazione (ad esempio, un formato di password specifico).
+        li
+            strong#accountEsistente Ho ricevuto un messaggio di "Account già esistente"
+            ul
+                li Se ricevi questo messaggio durante la registrazione, potresti aver già un account con lo stesso nome utente. In tal caso, prova a effettuare il login anziché registrarti di nuovo.
+                li Se pensi che qualcuno abbia creato un account usando il tuo nome utente senza il tuo consenso, contatta il supporto per risolvere il problema.
+        li 
+            strong  L'invio del modulo di registrazione non funziona
+            ul  
+                li Verifica la connessione internet e assicurati che il sito o l'applicazione siano online.
+                li Aggiorna la pagina e riprova a inviare il modulo di registrazione.
+                li Se il problema persiste, contatta l'assistenza tecnica.
+        li
+            strong Errore generico durante la registrazione
+            ul
+                li Cerca ulteriori dettagli sull'errore specifico fornito durante la registrazione e segui le indicazioni per risolverlo.
+                li Contatta l'assistenza clienti o l'amministratore del sito per assistenza.
+
+    section#login
+    h2 Problemi con il Login
+    ul
+        li
+            strong Nome utente o password errati
+            ul
+                li Verifica attentamente l'accuratezza del nome utente e della password. Assicurati di inserirli correttamente, facendo attenzione alle maiuscole e alle minuscole.
+        li
+            strong#passwordDimenticata Password dimenticata
+            ul
+                li Premi il seguente pulsante e scrivi nel corpo del testo della mail il tuo nome utente,  riceverai un'email con le istruzioni per crearne una nuova.
+                button.btn(type="button" onclick="window.location.href='mailto:alebonora2003@gmail.com?subject=Password%20dimenticata'") clicca qui
+        li
+            strong Account bloccato o sospeso
+            ul
+                li Contatta l'assistenza clienti o l'amministratore del sito per verificare e risolvere il motivo del blocco o della sospensione dell'account.
+        li
+            strong Problemi tecnici o di connessione
+            ul
+                li Verifica la tua connessione internet. Assicurati di essere connesso a una rete stabile.
+                li Aggiorna la pagina e riprova a effettuare il login.
+                li Se il problema persiste, contatta l'assistenza tecnica.
+        li
+            strong Nessun account associato a questo nome utente
+            ul
+                li Verifica se hai inserito correttamente il nome associato al tuo account.
+                li Se hai più account con nomi utenti diversi, assicurati di utilizzare quello giusto.
+        li
+            strong Errore generico durante il login
+            ul
+                li Cerca ulteriori dettagli sull'errore specifico fornito durante il login e segui le indicazioni per risolverlo.
+                li Contatta l'assistenza clienti o l'amministratore del sito per assistenza.
+    p
+        a(href='/') Torna alla homepage
+  #sidebar
+    section.widget
+        h4.widgettitle  Dopo aver letto le possibili soluzioni
+        ul
+            li 
+                a(href="/register") Registra un account per accedere alle funzionalita avanzate        
+            li
+                a(href="/login") Accedi al tuo account per gestire le gare
+    section.widget
+      h4.widgettitle Funzionalità del Sito
+      p Descrizione delle funzionalità principali del sito:
+      ul.check-list
+        li Visualizza elenco di tutte le gare U23 in Italia
+        li Registra un account per accedere alle funzionalità avanzate
+        li Scarica i percorsi gpx 
+        li Confrontati con altri utenti nella sezione commenti
+
+  footer#footer
+    p Sito di 
+      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.

@@ -1,0 +1,78 @@
+extends layout
+
+block content
+  #content-percorsi
+    
+    #search-bar
+      input(type="text", id="search-input", placeholder="Cerca una gara...")
+  
+    
+    #scelte-gare-container
+      each percorso in percorsi 
+        .sceltagara
+          h2 #{percorso.nome}
+          table.listagara
+            tr 
+              td    
+                i.fa-solid.fa-route 
+              td
+                strong Lunghezza: 
+                | #{(percorso.distanza).toFixed(1)} km
+            tr 
+              td    
+                i.fa-solid.fa-mountain 
+              td
+                strong Metri di dislivello: 
+                | #{Math.round(percorso.dislivello)} m
+            tr 
+              td    
+                i.fa-solid.fa-earth-europe
+              td
+                strong Tipo:
+                |  #{percorso.tipo}
+          .button-container
+            a(href='/percorsi/' + percorso._id, class="btn") Dettagli
+    
+  footer#footer
+    p Sito di 
+      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+
+
+  script.
+    document.addEventListener('DOMContentLoaded', function () {
+      const searchInput = document.getElementById('search-input');
+      const scelteGare = document.querySelectorAll('.sceltagara');
+
+      searchInput.addEventListener('input', function () {
+        const searchTerm = searchInput.value.toLowerCase();
+
+        scelteGare.forEach((percorso) => {
+          const nomeGara = percorso.querySelector('h2').textContent.toLowerCase();
+
+          if (nomeGara.includes(searchTerm)) {
+            percorso.style.display = 'block';
+          } else {
+            percorso.style.display = 'none';
+          }
+        });
+      });
+    });
+
+  script.
+    document.addEventListener('DOMContentLoaded', function () {
+      const scelteGareContainer = document.getElementById('scelte-gare-container');
+      const scelteGare = Array.from(document.querySelectorAll('.sceltagara'));
+
+      // Ordina le gare in ordine alfabetico basato sui loro nomi
+      scelteGare.sort((a, b) => {
+        const nomeA = a.querySelector('h2').textContent.toLowerCase();
+        const nomeB = b.querySelector('h2').textContent.toLowerCase();
+        return nomeA.localeCompare(nomeB);
+      });
+
+      // Aggiungi le gare ordinate nuovamente al contenitore
+      scelteGare.forEach((percorso) => {
+        scelteGareContainer.appendChild(percorso);
+      });
+    });

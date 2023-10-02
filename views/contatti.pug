@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  #content
+    h1 Contatti
+    p Puoi contattarci tramite i seguenti dettagli di contatto:
+    table.listagara
+              tr 
+                td    
+                  i.fa-solid.fa-envelope.fa-beat
+                td
+                  strong alebonora2003@gmail.com
+              tr 
+                td    
+                  i.fa-solid.fa-phone.fa-beat
+                td
+                  strong +39 3519890456
+              tr  
+                td 
+                  i.fa-brands.fa-instagram.fa-beat
+                td
+                  strong Instagram:
+                  a(href="https://www.instagram.com/alessiobonora_") alessiobonora_ 
+              tr 
+                td
+                  i.fa-brands.fa-strava.fa-beat 
+                td 
+                  strong Strava:
+                  a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+              tr  
+                td 
+                    i.fa-solid.fa-envelope.fa-beat
+                td 
+                    a(href="mailto:alebonora2003@gmail.com") Contatta l'assistenza
+
+    p
+      a(href='/') Torna alla homepage
+  #sidebar
+    section.widget
+      h4.widgettitle Funzionalità del Sito
+      p Descrizione delle funzionalità principali del sito:
+      ul.check-list
+        li Visualizza elenco di tutte le gare U23 in Italia
+        li Registra un account per accedere alle funzionalità avanzate
+        li Scarica i percorsi gpx 
+        li Confrontati con altri utenti nella sezione commenti
+
+  footer#footer
+    p Sito di 
+      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.

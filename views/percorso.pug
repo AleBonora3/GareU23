@@ -1,0 +1,240 @@
+extends layout
+
+block content
+
+
+  #content
+    article.gara
+      header
+        h1.gara-title Gara di #{datiPercorso.nome}
+      p.descrizione-gara #{datiPercorso.descrizione}.
+      section
+        #chart-container(style="width: 90%; height: 300px; margin: 0 auto;")
+          // Inizializza il grafico utilizzando i dati passati dal server
+        script(src="https://code.highcharts.com/highcharts.js")
+        script.
+          const chartData = !{JSON.stringify(chartData)};
+          Highcharts.chart('chart-container', {
+            chart: {
+              type: 'area'
+            },
+            title: {
+              text: 'Profilo Altimetrico'
+            },
+            xAxis: {
+              categories: chartData.distance
+            },
+            yAxis: {
+              title: {
+                text: 'Altitudine (metri)'
+              }
+            },
+            series: [{
+              name: 'Altitudine',
+              data: chartData.elevation,
+              marker: {
+                enabled: false
+              }
+            }]
+          });
+      section
+        h2 Mappa del percorso
+        #map(style="width: 90%; height: 400px; margin: 0 auto;")
+        
+        script.
+          const mapData = !{JSON.stringify(mapData)};
+          const map = L.map('map').setView(mapData[0], 13);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '© OpenStreetMap contributors'
+          }).addTo(map);
+          L.polyline(mapData).addTo(map);
+          
+
+          // Aggiungi le immagini di inizio e fine
+          var startIcon = L.icon({
+            iconUrl: '/images/start-icon.png',
+            iconSize: [32, 32],
+          });
+        
+          var endIcon = L.icon({
+            iconUrl: '/images/end-icon.png',
+            iconSize: [32, 32],
+          });
+
+          L.marker(mapData[0], { icon: startIcon }).addTo(map);
+          L.marker(mapData[mapData.length - 1], { icon: endIcon }).addTo(map);
+
+          // Crea un pulsante come layer personalizzato
+          const buttonLayer = L.control();
+
+          buttonLayer.onAdd = function (map) {
+          const container = L.DomUtil.create('div', 'leaflet-control-button');
+
+          // Aggiungi il pulsante HTML
+          container.innerHTML = '<button class="btn" id="downloadButton">Scarica GPX</button>';
+
+          // Aggiungi un gestore di eventi al pulsante
+          container.querySelector('#downloadButton').addEventListener('click', () => {
+              // URL del file GPX da scaricare (sostituisci con il tuo percorso)
+              console.log("sono in : " + window.location.pathname);
+
+              let percorsoObj = !{JSON.stringify(datiPercorso)};
+              const gpxFileUrl = percorsoObj.gpxfile.split('public')[1];
+              console.log(gpxFileUrl);
+
+              // Crea un elemento <a> per il download
+              const downloadLink = document.createElement('a');
+              downloadLink.href = gpxFileUrl;
+              downloadLink.href = '/';
+              let  nomePercorso = percorsoObj.nome;
+              downloadLink.download = nomePercorso + '.gpx'; // Nome del file da scaricare
+
+              // Simula un clic sull'elemento <a> per avviare il download
+              downloadLink.click();
+          });
+
+          return container;
+          };
+
+          // Aggiungi il layer del pulsante alla mappa
+          buttonLayer.addTo(map);
+  
+  #sidebar
+    section.widget
+      h4.widgettitle Dettagli della gara
+
+      table.listagara
+            tr 
+              td    
+                i.fa-solid.fa-route 
+              td
+                strong Lunghezza: 
+                | #{(datiPercorso.distanza).toFixed(1)} km
+            tr 
+              td    
+                i.fa-solid.fa-mountain 
+              td
+                strong Metri di dislivello: 
+                | #{Math.round(datiPercorso.dislivello)} m
+            tr 
+              td    
+                i.fa-solid.fa-earth-europe
+              td
+                strong Tipo:
+                |  #{datiPercorso.tipo}
+            tr 
+              td    
+                i.fa-solid.fa-plug-circle-bolt
+              td
+                strong Livello di difficolta:
+                |  #{datiPercorso.difficolta}
+            tr 
+              td    
+                i.fa-solid.fa-bicycle
+              td
+                strong Categoria:
+                |  #{datiPercorso.categoria}
+
+    section.widget 
+      h4.widgettitle Meteo di #{citta}
+        table.listagara.meteo
+          //- each previsione in previsioniMeteo
+          tr 
+            td
+              i.fa-solid.fa-calendar-day
+            each day in previsioniMeteo
+              td= day.day
+          tr  
+            td
+              i.fa-solid.fa-temperature-low
+            each temperatura in previsioniMeteo
+              td= temperatura.temperature.toFixed(1)
+          tr  
+            td
+              i.fa-solid.fa-cloud-sun 
+            each previsione in previsioniMeteo 
+              //- td= previsione.descriptions
+              td
+                if previsione.descriptions === "Clouds"
+                  i.fa-solid.fa-cloud
+                else if previsione.descriptions === "Clear"
+                  i.fa-solid.fa-sun.fa-beat
+                else if previsione.descriptions === "Rain"
+                  i.fa-solid.fa-cloud-rain
+                else if previsione.descriptions === "Snow"
+                  i.fa-solid.fa-snowflake
+                else if previsione.descriptions === "Drizzle"
+                  i.fa-solid.fa-cloud-showers-heavy
+                else if previsione.descriptions === "Thunderstorm"
+                  i.fa-solid.fa-cloud-bolt
+
+                
+    section.widget
+      h4.widgettitle Commenti
+      form(id="comment-form", action="/percorsi/add-comment", method="post")
+        div.form-group
+          input(type="hidden", name="percorsoId", value=datiPercorso._id)
+        div.form-group
+          label(for="comment") Commento:
+          textarea(id="comment", name="comment", required)
+        button(type="submit") Invia Commento
+      ul#comment-list
+        each comment in datiPercorso.commenti
+          li(id="comment-#{comment._id}")
+            strong #{comment.autore}:
+            | #{comment.testo}
+
+    section.widget 
+      h4.widgettitle Domande e consigli utili
+      ul 
+        li
+          a(href="mailto:alebonora2003@gmail.com") Manda una mail agli sviluppatori
+
+  footer#footer
+    p Sito di 
+      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+
+  script.
+    // codice JavaScript lato client per gestire la chiamata AJAX
+    document.addEventListener('DOMContentLoaded', function () {
+      //- console.log('DOM pronto');
+      const commentForm = document.getElementById('comment-form'); // Form dei commenti
+      //- console.log(commentForm); // Verifica se il form viene selezionato correttamente
+      const commentList = document.getElementById('comment-list'); // Elenco dei commenti
+
+      commentForm.addEventListener('submit', function (e) {
+        e.preventDefault(); // Evita l'invio del modulo predefinito
+
+        const xhr = new XMLHttpRequest();
+        const formData = new FormData(commentForm);
+        //- console.log(formData);
+
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+              const newComment = JSON.parse(xhr.responseText);
+
+              // Crea un nuovo elemento per il commento e aggiungilo all'elenco dei commenti
+              const li = document.createElement('li');
+              li.id = `comment-${newComment._id}`;
+              li.innerHTML = `<strong>${newComment.autore}:</strong> ${newComment.testo}`;
+              commentList.appendChild(li);
+
+              // Cancella il contenuto del campo di testo dei commenti
+              document.getElementById('comment').value = '';
+            } else {
+              console.error('Errore nella richiesta AJAX:', xhr.status);
+            }
+          }
+        };
+
+        xhr.open('POST', '/percorsi/add-comment');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // Imposta l'intestazione Content-Type
+        //- La stringa 'application/x-www-form-urlencoded' è una convenzione standard 
+        //- per inviare dati di form HTML tramite richieste HTTP POST. Quando questa 
+        //- intestazione è impostata, i dati vengono serializzati in un formato specifico 
+        //- chiamato "x-www-form-urlencoded", che è facilmente interpretato dal server.
+        xhr.send(new URLSearchParams(formData).toString());
+      });
+    });

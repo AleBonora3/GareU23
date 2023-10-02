@@ -1,0 +1,30 @@
+
+header#header
+  hgroup
+    h1#site-logo Gare ciclistiche U23 ed Elite
+  nav
+    ul#main-nav
+      li: a(href='/') Home
+      li: a(href='/percorsi') Percorsi
+      li: a(href='/contatti') Contatti
+      if username
+        li(style="float: right;")
+          table#nav-table
+              tr 
+                td    
+                  i.fa-solid.fa-address-card 
+                td
+                  strong #{username}
+                td 
+                  form(action='/logout', method='get')
+                    button.btn-nav(type='submit') Logout
+      else
+        li(style="float: right;")
+          table#nav-table
+              tr
+                td 
+                  form(action='/register', method='get')
+                    button.btn-nav(type='submit') Registrati
+                td
+                  form(action='/login', method='get')
+                      button.btn-nav(type='submit') Accedi

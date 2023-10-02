@@ -1,0 +1,782 @@
+/************************************************************************************
+RESET
+*************************************************************************************/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+img,
+fieldset {
+    border: 0;
+}
+
+/* set image max width to 100% */
+img {
+    max-width: 100%;
+    height: auto;
+    width: auto\9;
+    /* ie8 */
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* set html5 elements to block */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+/************************************************************************************
+GENERAL STYLING
+*************************************************************************************/
+body {
+    background-image: url('../images/sfondo_ciclista.jpg');
+    /* Imposta il percorso dell'immagine */
+    background-size: cover;
+    /* Copri completamente l'area del corpo */
+    background-repeat: no-repeat;
+    /* Non ripetere l'immagine */
+    background-attachment: fixed;
+    /* Imposta l'immagine come sfondo fisso */
+    font: .81em/150% Arial, Helvetica, sans-serif;
+    color: black;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a {
+    color: #026acb;
+    text-decoration: none;
+    outline: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+p {
+    margin: 0 0 1.2em;
+    padding: 0;
+}
+
+/* list */
+ul,
+ol {
+    margin: 1em 0 1.4em 24px;
+    padding: 0;
+    line-height: 140%;
+}
+
+li {
+    margin: 0 0 .5em 0;
+    padding: 0;
+}
+
+/* headings */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.4em;
+    margin: 20px 0 .4em;
+    color: black;
+}
+
+h1 {
+    font-size: 2em;
+}
+
+h2 {
+    font-size: 1.6em;
+}
+
+h3 {
+    font-size: 1.4em;
+}
+
+h4 {
+    font-size: 1.2em;
+}
+
+h5 {
+    font-size: 1.1em;
+}
+
+h6 {
+    font-size: 1em;
+}
+
+/* reset webkit search input styles */
+input[type=search] {
+    appearance: none;
+    outline: none;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button {
+    display: none;
+}
+
+/* table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #ddd;
+}
+
+th {
+    background-color: #b9b9b9;
+    font-weight: bold;
+}
+
+tr {
+    background-color: #ccc;
+}
+
+td:nth-child(1) {
+    background-color: #f2f2f2;
+}
+
+tr:hover {
+    background-color: #f5f5f5;
+} */
+
+/************************************************************************************
+HEADER
+*************************************************************************************/
+#header {
+    background-color: rgba(112, 172, 152, 0.8);
+    padding: 10px;
+    position: relative;
+    border-bottom: solid 1px #272d30;
+    box-shadow: inset 0px -1px 0px 0px #51575a;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.75);
+    /* background-image: url('../images/BiciPercorso.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed; */
+    /* Imposta l'immagine di sfondo come fissa */
+    height: 110px;
+    /* Altezza dell'header, può variare a seconda delle esigenze */
+    /* filter: blur(1px); */
+}
+
+
+/* site logo */
+#site-logo {
+    top: 10px;
+    font-family: Arial, sans-serif;
+    font-size: 36px;
+    /* Dimensione del carattere */
+    font-weight: bold;
+    /* Grassetto */
+    color: lightgrey;
+    text-decoration: none;
+    text-align: center;
+}
+
+
+/************************************************************************************
+MAIN NAVIGATION
+*************************************************************************************/
+
+#main-nav {
+    width: 97%;
+    margin: 0;
+    margin-right: 1%;
+    padding: 0;
+    position: absolute;
+    bottom: 5%;
+    z-index: 100;
+    background: linear-gradient(-90deg, rgb(112, 172, 152), #007bff);
+
+}
+
+#main-nav li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    float: left;
+    position: relative;
+}
+
+#main-nav li:first-child {
+    margin-left: 10px;
+}
+
+#main-nav a {
+    font-weight: bold;
+    color: #fff;
+    display: block;
+    padding: 14px 15px;
+    text-decoration: none;
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+}
+
+#main-nav a:hover {
+    color: #fff;
+    background: #474747;
+    /* gradient */
+    background: linear-gradient(-90deg, #282828, #4f4f4f);
+}
+
+table#nav-table {
+    border-collapse: collapse;
+    /* Rimuove i bordi tra le celle */
+    background-color: transparent;
+    /* Rende la tabella trasparente */
+    text-shadow: none;
+    /* Rimuove il text-shadow */
+}
+
+table#nav-table tr td {
+    padding: 10px;
+    /* Aggiunge spazio tra il contenuto delle celle */
+    border: none;
+    /* Rimuove i bordi delle celle */
+}
+
+table#nav-table i.fa-address-card {
+    /* Stili per l'icona */
+    font-size: 24px;
+    color: #fff;
+    /* Colore dell'icona */
+}
+
+table#nav-table strong {
+    /* Stili per il nome utente */
+    font-size: 18px;
+    color: #fff;
+    /* Colore del testo */
+    font-weight: bold;
+}
+
+.btn-nav {
+    background-color: #007bff;
+    /* Colore di sfondo */
+    color: white;
+    /* Colore del testo */
+    padding: 5px 10px;
+    /* Spaziatura interna */
+    border: none;
+    /* Rimuove i bordi */
+    border-radius: 5px;
+    /* Bordo arrotondato */
+    cursor: pointer;
+    /* Cambia il cursore al passaggio del mouse */
+}
+
+/* Stile del bottone al passaggio del mouse */
+.btn-nav:hover {
+    background-color: #0056b3;
+    /* Cambia il colore di sfondo al passaggio del mouse */
+}
+
+/************************************************************************************
+CONTENT
+*************************************************************************************/
+
+#content {
+    background-color: rgba(255, 255, 255, 0.9);
+    /* Colore blu con trasparenza al 80% */
+    margin: 30px 1% 30px;
+    padding: 3% 4%;
+    width: 60%;
+    float: left;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* box shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+/* gara */
+.gara {
+    margin-bottom: 40px;
+}
+
+.gara-title {
+    margin: 0 0 5px;
+    padding: 0;
+    font: bold 26px/120% Arial, Helvetica, sans-serif;
+}
+
+.descrizione-home {
+    font: italic 120% "Times New Roman", Times, serif;
+    color: rgb(95, 94, 94);
+}
+
+/* gara descrizione */
+.descrizione-gara {
+    font: italic 130% "Times New Roman", Times, serif;
+    color: black;
+}
+
+/************************************************************************************
+SIDEBAR
+*************************************************************************************/
+#sidebar {
+    width: 30%;
+    float: right;
+    margin: 30px 0 30px;
+}
+
+.widget {
+    background: #fff;
+    margin: 0px 1% 30px;
+    padding: 10px 20px;
+    /* rounded corner */
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    /* box shadow */
+    -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .4);
+}
+
+.widgettitle {
+    margin: 0 0 5px;
+    padding: 0;
+}
+
+.widget ul {
+    margin: 0;
+    padding: 0;
+}
+
+.widget li {
+    margin: 0;
+    padding: 6px 0;
+    list-style: none;
+    clear: both;
+    border-top: solid 1px #eee;
+}
+
+.widget:after {
+    visibility: hidden;
+    display: block;
+    font-size: 0;
+    content: " ";
+    clear: both;
+    height: 0;
+}
+
+.check-list li {
+    padding: 0.7em 0 0.7em 45px;
+    font-size: 1.2em;
+    background: url("../images/icon-checkmark.png") 0px 1.05em no-repeat;
+}
+
+/************************************************************************************
+SIDEBAR PER I COMMENTI
+*************************************************************************************/
+
+/* Stile del modulo di invio commenti */
+#comment-form button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#comment-form button[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Stile per il modulo di invio commenti */
+#comment-form {
+    margin-bottom: 20px;
+    /* Spazio sotto il modulo */
+}
+
+#comment-form .form-group {
+    margin-bottom: 10px;
+    /* Spazio tra i campi del modulo */
+}
+
+#comment-form label {
+    display: block;
+    /* Mostra le etichette su una riga separata */
+    font-weight: bold;
+    /* Testo in grassetto */
+}
+
+#comment-form textarea {
+    width: 100%;
+    /* Riempie completamente la larghezza del modulo */
+    height: 100px;
+    /* Altezza desiderata */
+    padding: 5px;
+    /* Spaziatura interna */
+    border: 1px solid #ddd;
+    /* Bordo */
+    border-radius: 5px;
+    /* Bordi arrotondati */
+}
+
+/* Stile per la lista dei commenti */
+#comment-list {
+    list-style: none;
+    /* Rimuove i punti elenco */
+    padding: 0;
+    /* Rimuove il padding predefinito */
+}
+
+#comment-list li {
+    margin-bottom: 10px;
+    /* Spazio tra i commenti */
+    border: 1px solid #ddd;
+    /* Bordo per ciascun commento */
+    padding: 10px;
+    /* Spaziatura interna */
+    background-color: #fff;
+    /* Colore di sfondo del commento */
+    border-radius: 5px;
+    /* Bordi arrotondati */
+}
+/************************************************************************************
+METEO
+*************************************************************************************/
+.fa-sun{
+    font-size: 24px;
+    color: orange;
+}
+.fa-cloud-rain, .fa-cloud-showers-heavy, .fa-cloud-bolt{
+    font-size: 24px;
+}
+.fa-snowflake{
+    font-size: 24px;
+    color: lightblue;
+}
+.fa-cloud{
+    font-size:24px;
+    color: gray;
+}
+table.meteo td {
+    border-right: 1px solid lightgray;
+    text-align: center;
+}
+
+/************************************************************************************
+SCELTA GARE
+*************************************************************************************/
+#scelte-gare-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.sceltagara {
+    background-color: rgba(255, 255, 255, 0.9);
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 1rem;
+    margin: 1rem;
+    flex: 1;
+    min-width: 300px;
+    max-width: 300px;
+}
+
+/* Stilizzazione della tabella */
+table.listagara {
+    width: 100%;
+    border-collapse: collapse;
+    border: 0px solid #ddd;
+}
+
+/* Stilizzazione delle righe della tabella */
+table.listagara tr {
+    border-bottom: 0px solid #ddd;
+    /* Bordo inferiore delle righe */
+}
+
+/* Stilizzazione delle celle con icone */
+table.listagara td:nth-child(1) {
+    padding: 10px;
+    /* Spaziatura interna delle celle */
+    text-align: center;
+    /* Centra il contenuto orizzontalmente */
+}
+
+/* Stilizzazione delle icone */
+table.listagara td:nth-child(1) i {
+    font-size: 24px;
+    /* Dimensione dell'icona */
+    color: #007bff;
+    /* Colore dell'icona (puoi cambiarlo a tuo piacimento) */
+}
+
+/* Stilizzazione del testo */
+table.listagara td:nth-child(2) p {
+    margin: 0;
+    /* Rimuove il margine predefinito del paragrafo */
+    padding: 10px;
+    /* Spaziatura interna delle celle */
+}
+
+.sceltagara h2 {
+    color: #007bff;
+    text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.6);
+    text-align: center;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    /* Allinea il bottone al centro orizzontalmente */
+    align-items: center;
+    /* Allinea il bottone al centro verticalmente */
+}
+
+.btn {
+    display: inline-block;
+    padding: 8px 12px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+#search-bar {
+    margin-top: 20px;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+#search-input {
+    width: 96%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/************************************************************************************
+PROBLEMI
+*************************************************************************************/
+/* Stile della tabella */
+table#problemi {
+    width: 100%;
+    /* Larghezza al 100% della larghezza del contenitore */
+    border-collapse: collapse;
+    /* Rimuove i bordi tra le celle */
+    font-size: 18px;
+    /* Dimensione del testo */
+}
+
+/* Stile delle righe */
+table#problemi tr {
+    text-align: left;
+    /* Allineamento del testo a sinistra */
+}
+
+/* Stile delle celle */
+table#problemi td {
+    padding: 3px;
+    /* Spaziatura interna */
+    font-size: 18px;
+    /* Dimensione del testo */
+}
+
+/* Stile delle icone */
+table#problemi i {
+    font-size: 24px;
+    /* Dimensione dell'icona */
+    color: #007bff;
+    /* Colore dell'icona */
+    margin-right: 3px;
+    /* Margine a destra dell'icona per lo spazio */
+}
+
+/* Stile dei link */
+table#problemi a {
+    text-decoration: none;
+    /* Rimuove la sottolineatura del link */
+    color: #007bff;
+    /* Colore del link */
+}
+
+/* Stile dei link al passaggio del mouse */
+table#problemi a:hover {
+    text-decoration: underline;
+    /* Sottolineatura del link al passaggio del mouse */
+    color: #0056b3;
+    /* Cambia il colore del link al passaggio del mouse */
+}
+
+/************************************************************************************
+FOOTER
+*************************************************************************************/
+#footer {
+    clear: both;
+    color: #ccc;
+    font-size: 85%;
+}
+
+#footer a {
+    color: #fff;
+}
+
+footer {
+    text-align: center;
+    padding: 1rem;
+    background-color: rgba(112, 172, 152, 0.8);
+    color: black;
+    bottom: 0;
+}
+
+/************************************************************************************
+REGISTRAZIONE
+*************************************************************************************/
+.registrazionetitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.registrazione {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/************************************************************************************
+smaller than 2000
+*************************************************************************************/
+@media screen and (max-width: 2000px) {
+
+    /* body */
+    body {
+        width: 100%;
+    }
+
+    /* content */
+    #content {
+        width: 60%;
+        padding: 3% 3%;
+    }
+
+    /* sidebar */
+    #sidebar {
+        width: 30%;
+        padding: 0% 1%;
+    }
+
+    #sidebar .widget {
+        padding: 8% 7%;
+        margin-bottom: 10px;
+    }
+}
+
+/************************************************************************************
+smaller than 980
+*************************************************************************************/
+@media screen and (max-width: 980px) {
+
+    /* body */
+    body {
+        width: 95%;
+    }
+
+    /* content */
+    #content {
+        width: 55%;
+        padding: 3% 4%;
+    }
+
+    /* sidebar */
+    #sidebar {
+        width: 30%;
+    }
+
+    #sidebar .widget {
+        padding: 8% 7%;
+        margin-bottom: 10px;
+    }
+}
+
+/************************************************************************************
+smaller than 650
+*************************************************************************************/
+@media screen and (max-width: 650px) {
+
+    /* header */
+    #header {
+        height: auto;
+    }
+
+    /* main nav */
+    #main-nav {
+        position: static;
+    }
+
+    /* site logo */
+    #site-logo {
+        margin: 15px 100px 5px 0;
+        position: static;
+    }
+
+    /* content */
+    #content {
+        width: auto;
+        float: none;
+        margin: 20px 0;
+    }
+
+    /* sidebar */
+    #sidebar {
+        width: 100%;
+        margin: 0;
+        float: none;
+    }
+
+    #sidebar .widget {
+        padding: 3% 4%;
+        margin: 0 0 10px;
+    }
+
+}
+
+/************************************************************************************
+smaller than 480
+*************************************************************************************/
+@media screen and (max-width: 480px) {
+
+    /* disable webkit text size adjust (for iPhone) */
+    html {
+        -webkit-text-size-adjust: none;
+    }
+
+    /* main nav */
+
+    #main-nav a {
+        font-size: 90%;
+        padding: 10px 8px;
+    }
+
+}
