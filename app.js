@@ -62,10 +62,10 @@ app.use(function(err, req, res, next) {
 // Middleware per gestire errori generici
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/GareDB', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+// mongoose.connect('mongodb://localhost/GareDB', {
+//   useNewUrlParser: true,
+//   useUnifiedTopology: true,
+// });
 // Quindi, questa riga di codice si connette al database MongoDB specificato 
 // nella stringa di connessione utilizzando Mongoose,
 // con l'uso delle opzioni useNewUrlParser (implicitamente impostato su true) e 
