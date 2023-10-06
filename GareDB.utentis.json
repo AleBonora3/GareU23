@@ -1,0 +1,80 @@
+[{
+  "_id": {
+    "$oid": "64f341947f320bac589dbaad"
+  },
+  "username": "Alessio_Bonora",
+  "password": "Alessio",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f59627ff4bca2881c74ad4"
+  },
+  "username": "a",
+  "password": "a",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64f9d5508717abf165a03e9a"
+  },
+  "username": "Gaia_Chiarelli",
+  "password": "1",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "64fb591436639177eebdc6ca"
+  },
+  "username": "debora",
+  "password": "debora123!",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "65020a6fb29742386843777f"
+  },
+  "username": "Nicolo_Arrighetti",
+  "password": "123456",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6504980d87863e6e7dc9d246"
+  },
+  "username": "pippo",
+  "password": "a",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6504a3a6a16e4823e7e10394"
+  },
+  "username": "bbb",
+  "password": "bbbbbb",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6504a40c4272f42c71da7404"
+  },
+  "username": "cc",
+  "password": "cccccc",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6504a4454272f42c71da7407"
+  },
+  "username": "dd",
+  "password": "dddddd",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6505d2ef73455c0f31813e77"
+  },
+  "username": "Fabio",
+  "password": "Fabio123!",
+  "__v": 0
+}]
