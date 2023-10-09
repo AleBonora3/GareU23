@@ -1,0 +1,36 @@
+extends layout
+
+block content
+  #content
+    h1 Calendario Nazionale/Internazionale 2023
+    // Aggiungi il seguente codice per incorporare il PDF
+    embed(type='application/pdf' src="pdf/Calendario.pdf" width='100%' height='800')
+  
+  #sidebar
+    // Singolo prodotto nell'inserzione pubblicitaria
+    - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
+    - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
+    - var anteprimaImmagine = "images/Guanti.jpg";
+    - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
+    .ad-container
+      a(href=urlProdotto, target='_blank')
+        h4 CycleStylist
+        img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+        .ad-offerta
+          p#offerta In Offerta
+        h2#ad-title= nomeProdotto
+      p#ad-description= descrizioneProdotto
+      a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+    section.widget
+      h4.widgettitle Funzionalità del Sito
+      p Descrizione delle funzionalità principali del sito:
+      ul.check-list
+        li Visualizza elenco di tutte le gare U23 in Italia
+        li Registra un account per accedere alle funzionalità avanzate
+        li Scarica i percorsi gpx 
+        li Confrontati con altri utenti nella sezione commenti
+
+  footer#footer
+    p Sito di 
+      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.

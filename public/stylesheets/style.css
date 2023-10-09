@@ -630,7 +630,59 @@ table#problemi a:hover {
     color: #0056b3;
     /* Cambia il colore del link al passaggio del mouse */
 }
-
+/************************************************************************************
+ADCONTAINER
+*************************************************************************************/
+.ad-offerta {
+    border: 2px solid #0E1B4D; /* Colore del bordo */
+    border-radius: 8px; /* Bordo arrotondato */
+    background-color: #4770DB; /* Colore di sfondo */
+    color: #0E1B4D; /* Colore del testo */
+    text-align: center; /* Allinea il testo al centro */
+    font-size: 18px; /* Dimensione del testo */
+    font-weight: bold; /* Grassetto */
+  }
+  #offerta{
+    margin: 2px;
+  }
+.ad-container {
+    border: 2px solid #0E1B4D;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #D0E0F2;
+  }
+  
+  #ad-image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+  
+  #ad-title {
+    margin-bottom: 10px;
+  }
+  
+  #ad-description {
+    color: #666;
+    margin-bottom: 15px;
+  }
+  
+  #ad-link {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  #ad-link:hover {
+    background-color: #2980b9;
+  }
+  
 /************************************************************************************
 FOOTER
 *************************************************************************************/

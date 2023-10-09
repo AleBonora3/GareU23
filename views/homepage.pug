@@ -7,6 +7,20 @@ block content
   #content
     h1 Benvenuti nel sito dedicato a tutti i ciclisti! 
     p.descrizione-home Quante volte ci siamo trovati prima delle gare a parlare tra compagni di squadra per capire come fosse il tracciato, se ci fossero dei punti pericolosi da tener presenti, a che chilometro iniziasse la salita, quanto mancasse all'arrivo dopo aver scollinato uno strappo e un sacco di altri punti interrogativi che spesso rimanevano senza risposte.
+    // Singolo prodotto nell'inserzione pubblicitaria
+    - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
+    - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
+    - var anteprimaImmagine = "images/Guanti.jpg";
+    - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
+    .ad-container
+      a(href=urlProdotto, target='_blank')
+        h4 CycleStylist
+        img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+        .ad-offerta
+          p#offerta In Offerta
+        h2#ad-title= nomeProdotto
+      p#ad-description= descrizioneProdotto
+      a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
     p
       | Per risolvere questa situazione ho pensato, in concomitanza con il mio 
       span(style="font-weight: bold;") progetto d'esame 
@@ -43,7 +57,20 @@ block content
 
 
   #sidebar
-  
+    section 
+      // Singolo prodotto nell'inserzione pubblicitaria
+      - var nomeProdotto = "CycleStylist Occhiali da sole";
+      - var urlProdotto = "https://cyclestylist.com/products/mens-cycling-glasses-colorful-sunglasses-outdoor?variant=47135823855941";
+      - var anteprimaImmagine = "images/occhiali.jpg";
+      - var descrizioneProdotto = "Esprimiti con stile e affronta il vento con sicurezza con i nostri Occhiali Veloci - l'accessorio essenziale per chi ama pedalare con personalità. La fusione perfetta tra design aerodinamico e praticità, questi occhiali sono il tocco finale che rende ogni corsa un'esperienza unica. Scegli lo stile che ti rappresenta, sfida il vento e cavalca con stile!";
+      .ad-container
+        a(href=urlProdotto, target='_blank')
+          h4 CycleStylist
+          img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+          .ad-offerta
+            p#offerta In Offerta
+          h4#ad-title= nomeProdotto
+        a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
     section.widget
       h4.widgettitle Prima di guardare i percorsi
       ul

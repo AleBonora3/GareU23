@@ -126,7 +126,15 @@ router.get('/problemi', function(req, res, next) {
     // res.redirect('/'); // Reindirizza alla pagina di login se l'utente non è autenticato
     res.render('problemi', { title: 'Problemi'});
   }
-  
+});
+// Pagina Problemi
+router.get('/calendario_gare', function(req, res, next) {
+  if (req.session.user) {
+    res.render('calendario_gare', { title: 'Calendario Gare', username: req.session.user });
+  } else {
+    // res.redirect('/'); // Reindirizza alla pagina di login se l'utente non è autenticato
+    res.render('calendario_gare', { title: 'Calendario Gare'});
+  }
 });
 
 module.exports = router;

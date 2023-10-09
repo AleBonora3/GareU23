@@ -134,7 +134,20 @@ block content
               td
                 strong Categoria:
                 |  #{datiPercorso.categoria}
-
+    section 
+      // Singolo prodotto nell'inserzione pubblicitaria
+      - var nomeProdotto = "CycleStylist Occhiali da sole";
+      - var urlProdotto = "https://cyclestylist.com/products/mens-cycling-glasses-colorful-sunglasses-outdoor?variant=47135823855941";
+      - var anteprimaImmagine = "../images/occhiali.jpg";
+      - var descrizioneProdotto = "Esprimiti con stile e affronta il vento con sicurezza con i nostri Occhiali Veloci - l'accessorio essenziale per chi ama pedalare con personalità. La fusione perfetta tra design aerodinamico e praticità, questi occhiali sono il tocco finale che rende ogni corsa un'esperienza unica. Scegli lo stile che ti rappresenta, sfida il vento e cavalca con stile!";
+      .ad-container
+        a(href=urlProdotto, target='_blank')
+          h4 CycleStylist
+          img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+          .ad-offerta
+            p#offerta In Offerta
+          h4#ad-title= nomeProdotto
+        a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
     section.widget 
       h4.widgettitle Meteo di #{citta}
         table.listagara.meteo
