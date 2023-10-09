@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const fs = require('fs');
 
-const fetch = require('node-fetch');//per supportare la fetch con la versione del servizio di host
+import fetch from 'node-fetch'; //per supportare la fetch con la versione del servizio di host
 
 const gpxParse = require('gpx-parse');
 //per calcolare le distanze dati latitudine e longitudine
