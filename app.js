@@ -71,9 +71,19 @@ const mongoose = require('mongoose');
 // con l'uso delle opzioni useNewUrlParser (implicitamente impostato su true) e 
 // useUnifiedTopology: true per garantire una connessione robusta e moderna.
 
-mongoose.connect('mongodb+srv://AlessioBonora:Bonny123!@cluster0.n2ggedi.mongodb.net/?retryWrites=true&w=majority', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true 
+
+// Sostituisci con la tua stringa di connessione di MongoDB Atlas
+const uri = "mongodb+srv://AlessioBonora:Bonny123!@cluster0.n2ggedi.mongodb.net/GareDB?retryWrites=true&w=majority";
+
+// Configurazione di Mongoose
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+// Verifica la connessione
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'Errore di connessione al database:'));
+db.once('open', () => {
+  console.log('Connessione al database riuscita!');
+  // Puoi iniziare a fare operazioni sul database qui
 });
 
 const bodyParser = require('body-parser');
