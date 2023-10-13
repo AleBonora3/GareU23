@@ -10,7 +10,7 @@ block content
     #scelte-gare-container
       each percorso in percorsi 
         .sceltagara
-          h2 #{percorso.nome}
+          h3 #{percorso.nome}
           table.listagara
             tr 
               td    
@@ -31,12 +31,42 @@ block content
                 strong Tipo:
                 |  #{percorso.tipo}
           .button-container
-            a(href='/percorsi/' + percorso._id, class="btn") Dettagli
+            a(href='/percorsi/' + percorso._id, class="button special") Dettagli
     
+    // Footer
   footer#footer
-    p Sito di 
-      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
-    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+    div.inner
+      h2 Contattaci
+      ul.actions
+        li
+          span.icon.fa-phone
+          p +39 3519890456
+        li
+          span.icon.fa-envelope
+          p alebonora2003@gmail.com
+        li
+          span.icon.fa-brands.fa-instagram
+          p
+            a(href="https://www.instagram.com/alessiobonora_") @alessiobonora_ 
+        li 
+          span.icon.fa-brands.fa-strava
+          p 
+            a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    .inner 
+      h2 Guida ai problemi
+      ul.actions  
+        li 
+          span
+            a(href="/problemi#registrazione") Ho problemi con la registrazione
+        li 
+          span 
+            a(href="/problemi#login") Ho problemi con il login
+        li 
+          span 
+            a(href="/problemi") Contatta l'assistenza
+  div.copyright  
+    p Sito di Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23. Tutti i diritti riservati.
 
 
   script.

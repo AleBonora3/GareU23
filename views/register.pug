@@ -1,41 +1,56 @@
 extends layout
 
 block content
-  #content
-    h1.registrazionetitle Registrazione
-    h2 
-      a(href="/problemi#accountEsistente") #{message}
-    form(id="comment-form" action='/register', method='post')
-      div.form-group
-        label(for='username') Username:
-        input(type='text', name='username', placeholder="inserisci username" required)
-      div.form-group
-        label(for='password') Password:
-        input(type='password', name='password', placeholder="password almeno 6 caratteri", minlength="6", required)
-      button(type="submit") Registrati
-    p.registrazione
-      a(href='/login') Hai già un account? Accedi qui.
 
-  #sidebar
-    section.widget
-      h4.widgettitle Funzionalità del Sito
-      p Descrizione delle funzionalità principali del sito:
-      ul.check-list
-        li Visualizza elenco di tutte le gare
-        li Registra un account per accedere alle funzionalità avanzate
-        li Accedi al tuo account per gestire le gare
-    section.widget
-      h4.widgettitle Guida ai problemi 
-      ul 
-        li 
-          a(href="/problemi#registrazione") Ho problemi con la registrazione
-        li 
-          a(href="/problemi#login") Ho problemi con il login
-        li 
-          a(href="/problemi") Contatta l'assistenza
-    
+  section#main.wrapper
+    .inner
+      header.align-center 
+        h2.content Registrati
+      h2 
+        a(href="/problemi#accountEsistente") #{message}
+      form(id="comment-form" action='/register', method='post')
+        div
+          label(for='username') Username:
+          input(type='text', name='username', placeholder="inserisci username" required)
+        div
+          label(for='password') Password:
+          input(type='password', name='password', placeholder="password almeno 6 caratteri", minlength="6", required)
+        div(style='margin-bottom: 10px;')
+        button.fit(type="submit") Registrati
+      p.align-center
+        a(href='/login') Hai già un account? Accedi qui.
 
+  // Footer
   footer#footer
-    p Sito di 
-      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
-    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+    div.inner
+      h2 Contattaci
+      ul.actions
+        li
+          span.icon.fa-phone
+          p +39 3519890456
+        li
+          span.icon.fa-envelope
+          p alebonora2003@gmail.com
+        li
+          span.icon.fa-brands.fa-instagram
+          p
+            a(href="https://www.instagram.com/alessiobonora_") @alessiobonora_ 
+        li 
+          span.icon.fa-brands.fa-strava
+          p 
+            a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    .inner 
+      h2 Guida ai problemi
+      ul.actions  
+        li 
+          span
+            a(href="/problemi#registrazione") Ho problemi con la registrazione
+        li 
+          span 
+            a(href="/problemi#login") Ho problemi con il login
+        li 
+          span 
+            a(href="/problemi") Contatta l'assistenza
+  div.copyright  
+    p Sito di Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23. Tutti i diritti riservati.

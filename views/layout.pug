@@ -1,13 +1,35 @@
+//- doctype html
+//- html
+//-   head
+//-     title= title
+//-     link(rel='stylesheet' href='/stylesheets/style.css')
+//-     link(rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css')
+//-     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css")
+//-     link(rel="icon", href="/images/icons8-ridebike.png", type="image/x-icon")
+    
+//-     script(src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js")
+//-   body
+//-     include navbarnew 
+//-     block content
+
 doctype html
 html
   head
+    meta(charset='utf-8')
+    meta(name='robots', content='index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
     title= title
-    link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/main.css')
     link(rel='stylesheet' href='https://unpkg.com/leaflet@1.7.1/dist/leaflet.css')
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css")
     link(rel="icon", href="/images/icons8-ridebike.png", type="image/x-icon")
     
     script(src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js")
+    script(src='/javascripts/jquery.min.js')
+    script(src='/javascripts/jquery.scrolly.min.js')
+    script(src='/javascripts/skel.min.js')
+    script(src='/javascripts/util.js')
+    script(src='/javascripts/main.js')
   body
     include navbarnew 
     block content

@@ -1,107 +1,265 @@
+//- extends layout
 
-  
+//- block content
+
+//-   #content
+//-     h1 Benvenuti nel sito dedicato a tutti i ciclisti! 
+//-     p.descrizione-home Quante volte ci siamo trovati prima delle gare a parlare tra compagni di squadra per capire come fosse il tracciato, se ci fossero dei punti pericolosi da tener presenti, a che chilometro iniziasse la salita, quanto mancasse all'arrivo dopo aver scollinato uno strappo e un sacco di altri punti interrogativi che spesso rimanevano senza risposte.
+//-     // Singolo prodotto nell'inserzione pubblicitaria
+//-     - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
+//-     - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
+//-     - var anteprimaImmagine = "images/Guanti.jpg";
+//-     - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
+//-     .ad-container
+//-       a(href=urlProdotto, target='_blank')
+//-         h4 CycleStylist
+//-         img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+//-         .ad-offerta
+//-           p#offerta In Offerta
+//-         h2#ad-title= nomeProdotto
+//-       p#ad-description= descrizioneProdotto
+//-       a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+//-     p
+//-       | Per risolvere questa situazione ho pensato, in concomitanza con il mio 
+//-       span(style="font-weight: bold;") progetto d'esame 
+//-       | di programmazione web e mobile per il corso di Sicurezza delle Reti e dei Sistemi Informatici presso l'
+//-       span(style="font-weight: bold;") Università Statale di Milano,
+//-       | di creare questo sito così da poter dare in anticipo a tutti coloro che ne hanno bisogno le risposte alle domande sovraelencate.
+//-     p
+//-       | Infatti qui troverete una vasta raccolta di informazioni sulle 
+//-       span(style="font-weight: bold;") gare ciclistiche di tutta Italia. 
+//-       | Il nostro 
+//-       span(style="font-weight: bold;") obiettivo 
+//-       | principale è fornire a voi, ciclisti agonisti, un luogo centrale dove potete scoprire tutte le gare in programma, accedere a 
+//-       span(style="font-weight: bold;") dettagliati percorsi 
+//-       | e, cosa ancora più importante, 
+//-       span(style="font-weight: bold;") interagire 
+//-       | con la community ciclistica presente sul sito.
+//-     p 
+//-       | Prima di accedere ai percorsi, è necessario 
+//-       span(style="font-weight: bold;") registrarsi 
+//-       | e effettuare il 
+//-       span(style="font-weight: bold;") login 
+//-       | sul nostro sito. La 
+//-       a(href="/register") registrazione 
+//-       | è un semplice processo che ti consentirà di sfruttare appieno tutte le funzionalità del nostro sito dedicato ai ciclisti. Una volta effettuato il 
+//-       a(href="/login") login
+//-       |, avrai accesso completo ai dettagli dei percorsi, in cui è possibile 
+//-       span(style="font-weight: bold;") scaricare il tracciato
+//-       |nel formato gpx che poi può essere caricato comodamente sui 
+//-       span(style="font-weight: bold;") ciclocomputer
+//-       |, così si potrà avere sotto gli occhi anche durante la competizione! 
+//-     p Inoltre per ogni gara elencata, è presente una sezione 
+//-       span(style="font-weight: bold;") "Commenti"
+//-       |, dove potrete confrontarvi con altri appassionati ciclisti, condividere esperienze, strategie e consigli per affrontare al meglio ogni gara.
+
+
+//-   #sidebar
+//-     section 
+//-       // Singolo prodotto nell'inserzione pubblicitaria
+//-       - var nomeProdotto = "CycleStylist Occhiali da sole";
+//-       - var urlProdotto = "https://cyclestylist.com/products/mens-cycling-glasses-colorful-sunglasses-outdoor?variant=47135823855941";
+//-       - var anteprimaImmagine = "images/occhiali.jpg";
+//-       - var descrizioneProdotto = "Esprimiti con stile e affronta il vento con sicurezza con i nostri Occhiali Veloci - l'accessorio essenziale per chi ama pedalare con personalità. La fusione perfetta tra design aerodinamico e praticità, questi occhiali sono il tocco finale che rende ogni corsa un'esperienza unica. Scegli lo stile che ti rappresenta, sfida il vento e cavalca con stile!";
+//-       .ad-container
+//-         a(href=urlProdotto, target='_blank')
+//-           h4 CycleStylist
+//-           img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
+//-           .ad-offerta
+//-             p#offerta In Offerta
+//-           h4#ad-title= nomeProdotto
+//-         a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+//-     section.widget 
+//-       a#ad-title(href="/percorsi") Guarda i percorsi
+//-     section.widget
+//-       h4.widgettitle Prima di guardare i percorsi
+//-       ul
+//-         li 
+//-           //- i.fa-solid.fa-arrow-right-to-bracket
+//-           a(href="/register")   Registra un account per accedere alle funzionalita avanzate        
+//-         li
+//-           //- i.fa-solid.fa-address-card§
+//-           a(href="/login")   Accedi al tuo account per gestire le gare
+//-     section.widget
+//-       h4.widgettitle Guida ai problemi 
+//-       ul 
+//-         li 
+//-           a(href="/problemi#registrazione") Ho problemi con la registrazione
+//-         li 
+//-           a(href="/problemi#login") Ho problemi con il login
+//-         li 
+//-           a(href="/problemi") Contatta l'assistenza
+//-     section.widget
+//-       h4.widgettitle Funzionalità del Sito
+//-       p Descrizione delle funzionalità principali del sito:
+//-       ul.check-list
+//-         li Visualizza elenco di tutte le gare U23 in Italia
+//-         li Registra un account per accedere alle funzionalità avanzate
+//-         li Scarica i percorsi gpx 
+//-         li Confrontati con altri utenti nella sezione commenti
+        
+
+//-   footer#footer
+//-     p Sito di 
+//-       a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+//-     p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+
 extends layout
 
 block content
 
-  #content
-    h1 Benvenuti nel sito dedicato a tutti i ciclisti! 
-    p.descrizione-home Quante volte ci siamo trovati prima delle gare a parlare tra compagni di squadra per capire come fosse il tracciato, se ci fossero dei punti pericolosi da tener presenti, a che chilometro iniziasse la salita, quanto mancasse all'arrivo dopo aver scollinato uno strappo e un sacco di altri punti interrogativi che spesso rimanevano senza risposte.
-    // Singolo prodotto nell'inserzione pubblicitaria
-    - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
-    - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
-    - var anteprimaImmagine = "images/Guanti.jpg";
-    - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
-    .ad-container
-      a(href=urlProdotto, target='_blank')
-        h4 CycleStylist
-        img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
-        .ad-offerta
-          p#offerta In Offerta
-        h2#ad-title= nomeProdotto
-      p#ad-description= descrizioneProdotto
-      a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
-    p
-      | Per risolvere questa situazione ho pensato, in concomitanza con il mio 
-      span(style="font-weight: bold;") progetto d'esame 
-      | di programmazione web e mobile per il corso di Sicurezza delle Reti e dei Sistemi Informatici presso l'
-      span(style="font-weight: bold;") Università Statale di Milano,
-      | di creare questo sito così da poter dare in anticipo a tutti coloro che ne hanno bisogno le risposte alle domande sovraelencate.
-    p
-      | Infatti qui troverete una vasta raccolta di informazioni sulle 
-      span(style="font-weight: bold;") gare ciclistiche di tutta Italia. 
-      | Il nostro 
-      span(style="font-weight: bold;") obiettivo 
-      | principale è fornire a voi, ciclisti agonisti, un luogo centrale dove potete scoprire tutte le gare in programma, accedere a 
-      span(style="font-weight: bold;") dettagliati percorsi 
-      | e, cosa ancora più importante, 
-      span(style="font-weight: bold;") interagire 
-      | con la community ciclistica presente sul sito.
-    p 
-      | Prima di accedere ai percorsi, è necessario 
-      span(style="font-weight: bold;") registrarsi 
-      | e effettuare il 
-      span(style="font-weight: bold;") login 
-      | sul nostro sito. La 
-      a(href="/register") registrazione 
-      | è un semplice processo che ti consentirà di sfruttare appieno tutte le funzionalità del nostro sito dedicato ai ciclisti. Una volta effettuato il 
-      a(href="/login") login
-      |, avrai accesso completo ai dettagli dei percorsi, in cui è possibile 
-      span(style="font-weight: bold;") scaricare il tracciato
-      |nel formato gpx che poi può essere caricato comodamente sui 
-      span(style="font-weight: bold;") ciclocomputer
-      |, così si potrà avere sotto gli occhi anche durante la competizione! 
-    p Inoltre per ogni gara elencata, è presente una sezione 
-      span(style="font-weight: bold;") "Commenti"
-      |, dove potrete confrontarvi con altri appassionati ciclisti, condividere esperienze, strategie e consigli per affrontare al meglio ogni gara.
-
-
-  #sidebar
-    section 
-      // Singolo prodotto nell'inserzione pubblicitaria
-      - var nomeProdotto = "CycleStylist Occhiali da sole";
-      - var urlProdotto = "https://cyclestylist.com/products/mens-cycling-glasses-colorful-sunglasses-outdoor?variant=47135823855941";
-      - var anteprimaImmagine = "images/occhiali.jpg";
-      - var descrizioneProdotto = "Esprimiti con stile e affronta il vento con sicurezza con i nostri Occhiali Veloci - l'accessorio essenziale per chi ama pedalare con personalità. La fusione perfetta tra design aerodinamico e praticità, questi occhiali sono il tocco finale che rende ogni corsa un'esperienza unica. Scegli lo stile che ti rappresenta, sfida il vento e cavalca con stile!";
-      .ad-container
-        a(href=urlProdotto, target='_blank')
-          h4 CycleStylist
-          img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
-          .ad-offerta
-            p#offerta In Offerta
-          h4#ad-title= nomeProdotto
-        a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
-    section.widget 
-      a#ad-title(href="/percorsi") Guarda i percorsi
-    section.widget
-      h4.widgettitle Prima di guardare i percorsi
-      ul
-        li 
-          //- i.fa-solid.fa-arrow-right-to-bracket
-          a(href="/register")   Registra un account per accedere alle funzionalita avanzate        
+  // Banner
+  section#banner
+    div.content
+      h1 Benvenuti nel sito dedicato a tutti i ciclisti!
+      p Quante volte ci siamo trovati prima delle gare a parlare tra compagni di squadra per capire come fosse il tracciato, se ci fossero dei punti pericolosi da tener presenti, a che chilometro iniziasse la salita, quanto mancasse all'arrivo dopo aver scollinato uno strappo e un sacco di altri punti interrogativi che spesso rimanevano senza risposte.
+      ul.actions
         li
-          //- i.fa-solid.fa-address-card§
-          a(href="/login")   Accedi al tuo account per gestire le gare
-    section.widget
-      h4.widgettitle Guida ai problemi 
-      ul 
-        li 
-          a(href="/problemi#registrazione") Ho problemi con la registrazione
-        li 
-          a(href="/problemi#login") Ho problemi con il login
-        li 
-          a(href="/problemi") Contatta l'assistenza
-    section.widget
-      h4.widgettitle Funzionalità del Sito
-      p Descrizione delle funzionalità principali del sito:
-      ul.check-list
-        li Visualizza elenco di tutte le gare U23 in Italia
-        li Registra un account per accedere alle funzionalità avanzate
-        li Scarica i percorsi gpx 
-        li Confrontati con altri utenti nella sezione commenti
-        
+          a.button.scrolly(href='/percorsi') Scopri i percorsi
+  // One
+  section#one.wrapper
+    div.inner.flex.flex-3
+      div.flex-item.left
+        div
+          h3 Specifiche tecniche
+          p Visualizza tutte le specifiche tecniche della gara in questione, come distanza, dislivello, mappa, profilo altimetrico e tante altro
+        div
+          h3 Meteo
+          p In una sezione avrai la possibilità di guardare le previsioni meteo del paese in cui parte la gara!
+      div.flex-item.image.fit.round
+        img(src='images/sfondo_ciclista.jpg', alt='', width='330', height='330')
+      div.flex-item.right
+        div
+          h3 Scarica i percorsi gpx
+          p Inserisci i file gpx nel tuo ciclocomputer così da poterlo visualizzare in gara
+        div
+          h3 Sezione Commenti
+          p Confrontati con altri utenti per avere tutte le informazioni di cui hai bisogno
 
-  footer#footer
-    p Sito di 
-      a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
-    p &copy; 2023 Gare ciclistiche U23 ed Elite. Tutti i diritti riservati.
+    // Two
+    section#two.wrapper.style1.special
+      div.inner
+        h2 Descrizione
+        figure
+          blockquote
+            p
+              | Per risolvere questa situazione ho pensato, in concomitanza con il mio 
+              span(style="font-weight: bold;") progetto d'esame 
+              | di programmazione web e mobile per il corso di Sicurezza delle Reti e dei Sistemi Informatici presso l'
+              span(style="font-weight: bold;") Università Statale di Milano,
+              | di creare questo sito così da poter dare in anticipo a tutti coloro che ne hanno bisogno le risposte alle domande sovraelencate.
+            p
+              | Infatti qui troverete una vasta raccolta di informazioni sulle 
+              span(style="font-weight: bold;") gare ciclistiche di tutta Italia. 
+              | Il nostro 
+              span(style="font-weight: bold;") obiettivo 
+              | principale è fornire a voi, ciclisti agonisti, un luogo centrale dove potete scoprire tutte le gare in programma, accedere a 
+              span(style="font-weight: bold;") dettagliati percorsi 
+              | e, cosa ancora più importante, 
+              span(style="font-weight: bold;") interagire 
+              | con la community ciclistica presente sul sito.
+            p 
+              | Prima di accedere ai percorsi, è necessario 
+              span(style="font-weight: bold;") registrarsi 
+              | e effettuare il 
+              span(style="font-weight: bold;") login 
+              | sul nostro sito. La 
+              a(href="/register", style="color: #fcdcd6; font-weight: bold;") registrazione 
+              | è un semplice processo che ti consentirà di sfruttare appieno tutte le funzionalità del nostro sito dedicato ai ciclisti. Una volta effettuato il 
+              a(href="/login", style="color: #fcdcd6; font-weight: bold;") login
+              |, avrai accesso completo ai dettagli dei percorsi, in cui è possibile 
+              span(style="font-weight: bold;") scaricare il tracciato
+              |nel formato gpx che poi può essere caricato comodamente sui 
+              span(style="font-weight: bold;") ciclocomputer
+              |, così si potrà avere sotto gli occhi anche durante la competizione! 
+            p Inoltre per ogni gara elencata, è presente una sezione 
+              span(style="font-weight: bold;") "Commenti"
+              |, dove potrete confrontarvi con altri appassionati ciclisti, condividere esperienze, strategie e consigli per affrontare al meglio ogni gara.
+          footer
+            cite.author Alessio Bonora
+
+    // Three
+    section#three.wrapper
+      div.inner.flex.flex-3
+        div.flex-item.box.ad-container
+          // Singolo prodotto nell'inserzione pubblicitaria
+          - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
+          - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
+          - var anteprimaImmagine = "images/Guanti.jpg";
+          - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
+          div.image.fit
+            img(src=anteprimaImmagine, alt=nomeProdotto, width='418', height='200')
+          div.content
+            a(href=urlProdotto, target='_blank')
+              h4 CycleStylist
+              .ad-offerta
+                p#offerta In Offerta
+              h2#ad-title= nomeProdotto
+            //- p#ad-description= descrizioneProdotto
+            a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+        div.flex-item.box.ad-container
+          // Singolo prodotto nell'inserzione pubblicitaria
+          - var nomeProdotto = "CycleStylist Occhiali da sole";
+          - var urlProdotto = "https://cyclestylist.com/products/mens-cycling-glasses-colorful-sunglasses-outdoor?variant=47135823855941";
+          - var anteprimaImmagine = "images/occhiali.jpg";
+          - var descrizioneProdotto = "Esprimiti con stile e affronta il vento con sicurezza con i nostri Occhiali Veloci - l'accessorio essenziale per chi ama pedalare con personalità. La fusione perfetta tra design aerodinamico e praticità, questi occhiali sono il tocco finale che rende ogni corsa un'esperienza unica. Scegli lo stile che ti rappresenta, sfida il vento e cavalca con stile!";
+          div.image.fit
+            img(src=anteprimaImmagine, alt=nomeProdotto, width='418', height='200')
+          div.content
+              a(href=urlProdotto, target='_blank')
+                h4 CycleStylist
+                .ad-offerta
+                  p#offerta In Offerta
+                h2#ad-title= nomeProdotto
+              //- p#ad-description= descrizioneProdotto
+              a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+        div.flex-item.box.ad-container
+          // Singolo prodotto nell'inserzione pubblicitaria
+          - var nomeProdotto = "CycleStylist Calze Aero";
+          - var urlProdotto = "https://cyclestylist.com/products/sport-profession-cycling-socks-men-anti-slip-seamless-aero-bike-wearproof-road-bicycle-socks-reflective-safety-sock";
+          - var anteprimaImmagine = "images/calze.jpg";
+          - var descrizioneProdotto = "";
+          div.image.fit
+            img(src=anteprimaImmagine, alt=nomeProdotto, width='418', height='200')
+          div.content
+              a(href=urlProdotto, target='_blank')
+                h4 CycleStylist
+                .ad-offerta
+                  p#offerta In Offerta
+                h2#ad-title= nomeProdotto
+              //- p#ad-description= descrizioneProdotto
+              a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
+    // Footer
+    footer#footer
+      div.inner
+        h2 Contattaci
+        ul.actions
+          li
+            span.icon.fa-phone
+            p +39 3519890456
+          li
+            span.icon.fa-envelope
+            p alebonora2003@gmail.com
+          li
+            span.icon.fa-brands.fa-instagram
+            p
+              a(href="https://www.instagram.com/alessiobonora_") @alessiobonora_ 
+          li 
+            span.icon.fa-brands.fa-strava
+            p 
+              a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+      .inner 
+        h2 Guida ai problemi
+        ul.actions  
+          li 
+            span
+              a(href="/problemi#registrazione") Ho problemi con la registrazione
+          li 
+            span 
+              a(href="/problemi#login") Ho problemi con il login
+          li 
+            span 
+              a(href="/problemi") Contatta l'assistenza
+    div.copyright  
+      p Sito di Alessio Bonora
+      p &copy; 2023 Gare ciclistiche U23. Tutti i diritti riservati.
