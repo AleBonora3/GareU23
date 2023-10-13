@@ -1,67 +1,66 @@
 extends layout
 
 block content
-  #content
-    h1 Calendario Nazionale/Internazionale 2023
-    a#ad-link(href="https://strada.federciclismo.it/attachment/0c5618cb-200f-4c94-8649-fb8f8d6b4640/") scarica il calendario
+  section#main.wrapper
+    .inner
+      header.align-center 
+        h2.content Calendario Nazionale/Internazionale 2023
+    a.button(href="https://strada.federciclismo.it/attachment/0c5618cb-200f-4c94-8649-fb8f8d6b4640/",style='margin-left: 10px;') scarica il calendario
+    div(style='margin-bottom: 10px;')
     // Aggiungi il seguente codice per incorporare il PDF
     embed(type='application/pdf' src="pdf/Calendario.pdf" width='100%' height='800')
   
-  #sidebar
-    // Singolo prodotto nell'inserzione pubblicitaria
-    - var nomeProdotto = "Guanti invernali touchscreen, antiscivolo e impermeabili.";
-    - var urlProdotto = "https://cyclestylist.com/products/winter-gloves-touch-screen-riding-motorcycle-sliding-waterproof-sports-gloves-with-fleece";
-    - var anteprimaImmagine = "images/Guanti.jpg";
-    - var descrizioneProdotto = "Esplora l'inverno con stile e comfort! I nostri guanti invernali da ciclismo sono progettati per offrirti un look unico, con materiali di alta qualità che garantiscono una vestibilità comoda. Scegli tra una varietà di colori per esprimere il tuo stile mentre affronti le giornate fredde con grinta e stile.";
-    .ad-container
-      a(href=urlProdotto, target='_blank')
-        h4 CycleStylist
-        img#ad-image(src=anteprimaImmagine, alt=nomeProdotto, width='100%')
-        .ad-offerta
-          p#offerta In Offerta
-        h2#ad-title= nomeProdotto
-      p#ad-description= descrizioneProdotto
-      a#ad-link(href=urlProdotto, target="_blank") Vai al Prodotto
-    section.widget
-      h4.widgettitle Funzionalità del Sito
-      p Descrizione delle funzionalità principali del sito:
-      ul.check-list
-        li Visualizza elenco di tutte le gare U23 in Italia
-        li Registra un account per accedere alle funzionalità avanzate
-        li Scarica i percorsi gpx 
-        li Confrontati con altri utenti nella sezione commenti
-
-      // Footer
-    footer#footer
-      div.inner
-        h2 Contattaci
-        ul.actions
-          li
-            span.icon.fa-phone
-            p +39 3519890456
-          li
-            span.icon.fa-envelope
-            p alebonora2003@gmail.com
-          li
-            span.icon.fa-brands.fa-instagram
-            p
-              a(href="https://www.instagram.com/alessiobonora_") @alessiobonora_ 
-          li 
-            span.icon.fa-brands.fa-strava
-            p 
-              a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
-      .inner 
-        h2 Guida ai problemi
-        ul.actions  
-          li 
-            span
-              a(href="/problemi#registrazione") Ho problemi con la registrazione
-          li 
-            span 
-              a(href="/problemi#login") Ho problemi con il login
-          li 
-            span 
-              a(href="/problemi") Contatta l'assistenza
-    div.copyright  
-      p Sito di Alessio Bonora
-      p &copy; 2023 Gare ciclistiche U23. Tutti i diritti riservati.
+  // One
+  section#one.wrapper
+    div.inner.flex.flex-3
+      div.flex-item.left
+        div
+          h3 Specifiche tecniche
+          p Visualizza tutte le specifiche tecniche della gara in questione, come distanza, dislivello, mappa, profilo altimetrico e tante altro
+        div
+          h3 Meteo
+          p In una sezione avrai la possibilità di guardare le previsioni meteo del paese in cui parte la gara!
+      div.flex-item.image.fit.round
+        img(src='images/sfondo_ciclista.jpg', alt='', width='330', height='330')
+      div.flex-item.right
+        div
+          h3 Scarica i percorsi gpx
+          p Inserisci i file gpx nel tuo ciclocomputer così da poterlo visualizzare in gara
+        div
+          h3 Sezione Commenti
+          p Confrontati con altri utenti per avere tutte le informazioni di cui hai bisogno
+  
+  // Footer
+  footer#footer
+    div.inner
+      h2 Contattaci
+      ul.actions
+        li
+          span.icon.fa-phone
+          p +39 3519890456
+        li
+          span.icon.fa-envelope
+          p alebonora2003@gmail.com
+        li
+          span.icon.fa-brands.fa-instagram
+          p
+            a(href="https://www.instagram.com/alessiobonora_") @alessiobonora_ 
+        li 
+          span.icon.fa-brands.fa-strava
+          p 
+            a(href="https://www.strava.com/athletes/18686973") Alessio Bonora
+    .inner 
+      h2 Guida ai problemi
+      ul.actions  
+        li 
+          span
+            a(href="/problemi#registrazione") Ho problemi con la registrazione
+        li 
+          span 
+            a(href="/problemi#login") Ho problemi con il login
+        li 
+          span 
+            a(href="/problemi") Contatta l'assistenza
+  div.copyright  
+    p Sito di Alessio Bonora
+    p &copy; 2023 Gare ciclistiche U23. Tutti i diritti riservati.
