@@ -78,7 +78,7 @@ block content
         const searchTerm = searchInput.value.toLowerCase();
 
         scelteGare.forEach((percorso) => {
-          const nomeGara = percorso.querySelector('h2').textContent.toLowerCase();
+          const nomeGara = percorso.querySelector('h3').textContent.toLowerCase();
 
           if (nomeGara.includes(searchTerm)) {
             percorso.style.display = 'block';
@@ -96,8 +96,8 @@ block content
 
       // Ordina le gare in ordine alfabetico basato sui loro nomi
       scelteGare.sort((a, b) => {
-        const nomeA = a.querySelector('h2').textContent.toLowerCase();
-        const nomeB = b.querySelector('h2').textContent.toLowerCase();
+        const nomeA = a.querySelector('h3').textContent.toLowerCase();
+        const nomeB = b.querySelector('h3').textContent.toLowerCase();
         return nomeA.localeCompare(nomeB);
       });
 
