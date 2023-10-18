@@ -7,6 +7,27 @@ block content
             header.align-center 
                 h2.content Aggiungi una Gara
             form(action='/addGara', method='post', enctype='multipart/form-data')
+                p.align-center
+                    strong Prima di aggiungere 
+                    | il file .gpx 
+                    strong assicurati 
+                    |che tu abbia 
+                    strong rinominato
+                    | il file come segue: 
+                    strong NomeGara.gpx.
+                    | Inoltre se hai scaricato il gpx da 
+                    strong Strava 
+                    | assicurati di aver 
+                    strong rinominato 
+                    | l'attività con il 
+                    strong nome della gara 
+                    | e non semplicemente con giro pomeridiano o simil.
+                p.align-center
+                    strong In questo modo 
+                    | aiuterai gli sviluppatori ad aggiungere 
+                    strong istantaneamente 
+                    | la tua gara!
+
                 input(type='file', name='gpxfile', accept='.gpx', required)
                 div(style='margin-bottom: 10px;')
                 label(for='descrizione') Descrizione:
