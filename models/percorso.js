@@ -16,5 +16,5 @@ const percorsoSchema = new mongoose.Schema({
   commenti:[{autore:String, testo:String}],
 //questi vengono inseriti dagli utenti quando utilizzano il sito
 });
-
+  link: String, // Aggiunto il campo "link"
 module.exports = mongoose.model('Percorso', percorsoSchema)

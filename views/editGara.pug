@@ -1,0 +1,27 @@
+extends layout
+
+block content
+    h1= title
+    form(action=`/editGara/${percorso._id}`, method="post", enctype="multipart/form-data")
+      label(for="descrizione") Descrizione:
+      input(type="text", id="descrizione", name="descrizione", value=percorso.descrizione)
+
+      label(for="tipo") Tipo:
+      select(name="tipo")
+        option(value="Regionale", selected=(percorso.tipo === "Regionale")) Regionale
+        option(value="Nazionale", selected=(percorso.tipo === "Nazionale")) Nazionale
+        option(value="Internazionale", selected=(percorso.tipo === "Internazionale")) Internazionale
+
+      label(for="categoria") Categoria:
+      select(name="categoria")
+        option(value="U23", selected=(percorso.categoria === "U23")) U23
+        option(value="U23 ed Elite", selected=(percorso.categoria === "U23 ed Elite")) U23 ed Elite
+        option(value="Elite", selected=(percorso.categoria === "Elite")) Elite
+
+      label(for="link") Link:
+      input(type="text", id="link", name="link", value=percorso.link)
+
+      label(for="gpxfile") GPX File:
+      input(type="file", id="gpxfile", name="gpxfile")
+
+      button(type="submit") Salva Modifiche

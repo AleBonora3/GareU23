@@ -34,7 +34,6 @@ router.get('/all', async function(req, res, next) {
   });
 });
 
-
 function getGaraData(gpxTrack) {
   // Leggi il file GPX e ottieni i dati altimetrici ed i punti della traccia
   const gpxData = fs.readFileSync(gpxTrack, 'utf8');

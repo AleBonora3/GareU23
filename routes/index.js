@@ -137,4 +137,170 @@ router.get('/calendario_gare', function(req, res, next) {
   }
 });
 
+const multer = require('multer');
+const path = require('path');
+
+const storage = multer.diskStorage({
+  destination: function (req, file, cb) {
+    cb(null, 'public/gpx');
+  },
+  filename: function (req, file, cb) {
+    // Usa il nome originale del file
+    const ext = path.extname(file.originalname);
+    const fileName = path.basename(file.originalname, ext);
+    cb(null, fileName + ext);
+  }
+});
+
+const upload = multer({ storage: storage });
+const fs = require('fs');
+//per calcolare le distanze dati latitudine e longitudine
+const geolib = require('geolib');
+const gpxParse = require('gpx-parse');
+const Percorso = require('../models/percorso');
+
+// Pagina di upload
+router.get('/addGara', requireLogin, function(req, res, next) {
+  res.render('addGara', { title: 'Aggiungi Gara', username: req.session.user });
+});
+
+// Elabora il modulo di upload
+router.post('/addGara', upload.single('gpxfile'), function(req, res, next) {
+  const gpxFile = req.file.path; // Percorso del file uploadato
+  const descrizione = req.body.descrizione;
+  const tipo = req.body.tipo; // Valore dalla prima select
+  const categoria = req.body.categoria; // Valore dalla seconda select
+
+  // Usa la funzione getGaraData per ottenere i dati dal file GPX
+  const garaData = getGaraData(gpxFile);
+  garaData.descrizione = descrizione;
+  garaData.tipo = tipo;
+  garaData.categoria = categoria;
+
+  // Salva nel database utilizzando il modello mongoose
+  const percorso = new Percorso(garaData);
+  percorso.save();
+  res.redirect('/');
+});
+
+function getGaraData(gpxTrack) {
+  // Leggi il file GPX e ottieni i dati altimetrici ed i punti della traccia
+  const gpxData = fs.readFileSync(gpxTrack, 'utf8');
+  let trackName = '';
+  let trackLength = 0;
+  let trackElevation = 0;
+  let retData = {};
+  
+  gpxParse.parseGpx(gpxData, function (error, data) {
+    if (!error) {
+      const trackPoints = data.tracks[0].segments[0];
+      let totalDistance = 0;
+      let totalElevation = 0;
+      trackName = data.tracks[0].name
+  
+      for (let i = 1; i < trackPoints.length; i++) {
+        const startPoint = trackPoints[i - 1];
+        const endPoint = trackPoints[i];
+        const distance = geolib.getDistance(
+          { latitude: startPoint.lat, longitude: startPoint.lon },
+          { latitude: endPoint.lat, longitude: endPoint.lon }
+        );
+  
+        totalDistance += distance/1000;
+  
+        if (Number(endPoint.elevation[0]) > Number(startPoint.elevation[0])) {
+          totalElevation += Number(endPoint.elevation[0]) - Number(startPoint.elevation[0]);
+        }
+      }
+
+      trackLength = totalDistance;
+      trackElevation = totalElevation;
+      let difficolta = "Bassa";
+      switch (true) {
+        case trackElevation >= 800 && trackElevation <1000:
+          difficolta = "Medio-Bassa"
+          break;
+        case trackElevation >= 1000 && trackElevation <1400:
+          difficolta = "Media"
+          break;
+        case trackElevation >= 1400 && trackElevation <1800:
+          difficolta = "Medio-Alta"
+          break;
+        case trackElevation >= 1800 && trackElevation <2000:
+          difficolta = "Alta"
+          break;
+        case trackElevation >= 2000:
+          difficolta = "Molto-Alta"
+          break;        
+        default:
+          difficolta = "Bassa";
+      }
+    
+      retData = {
+          nome: trackName,
+          gpxfile: gpxTrack,
+          distanza: trackLength,
+          dislivello: trackElevation,
+          difficolta: difficolta,
+          descrizione: "",
+          tipo: "",
+          categoria: "",
+          commenti:[],
+        };
+    } else {
+      console.error('Errore nella lettura del file GPX:', error);
+    }
+  });
+  return retData;
+}
+
+// ...
+
+// Pagina di modifica percorso
+router.get('/editGara/:id', requireLogin, async function (req, res, next) {
+  try {
+    const percorsoId = req.params.id;
+    const percorso = await Percorso.findById(percorsoId);
+
+    if (!percorso) {
+      return res.redirect('/');
+    }
+
+    res.render('editGara', { title: 'Modifica Percorso', percorso });
+  } catch (error) {
+    console.error(error);
+    res.redirect('/');
+  }
+});
+
+// Elabora il modulo di modifica
+router.post('/editGara/:id', upload.single('gpxfile'), async function (req, res, next) {
+  const percorsoId = req.params.id;
+  const gpxFile = req.file ? req.file.path : null;
+  const { descrizione, tipo, categoria, link } = req.body;
+
+  try {
+    const percorso = await Percorso.findByIdAndUpdate(
+      percorsoId,
+      {
+        $set: {
+          descrizione,
+          tipo,
+          categoria,
+          link,
+          gpxfile: gpxFile || percorso.gpxfile, // Se non è stato fornito un nuovo file, mantieni il vecchio
+        },
+      },
+      { new: true }
+    );
+
+    res.redirect('/');
+  } catch (error) {
+    console.error(error);
+    res.redirect('/');
+  }
+});
+
+// ...
+
 module.exports = router;

@@ -1,0 +1,25 @@
+extends layout
+
+block content
+
+    section#main.wrapper
+        .inner
+            header.align-center 
+                h2.content Aggiungi una Gara
+            form(action='/addGara', method='post', enctype='multipart/form-data')
+                input(type='file', name='gpxfile', accept='.gpx', required)
+                div(style='margin-bottom: 10px;')
+                label(for='descrizione') Descrizione:
+                input(type='text', name='descrizione', required)
+                label(for='tipo') Tipo:
+                select(name='tipo', required)
+                    option(value='Regionale') Regionale
+                    option(value='Nazionale') Nazionale
+                    option(value='Internazionale') Internazionale
+                label(for='categoria') Categoria:
+                select(name='categoria', required)
+                    option(value='U23') U23
+                    option(value='U23 ed Elite') U23 ed Elite
+                    option(value='Elite') Elite
+                div(style='margin-bottom: 10px;')
+                input.align-center(type='submit', value='Carica')
