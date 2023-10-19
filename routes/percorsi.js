@@ -28,7 +28,7 @@ function requireLogin(req, res, next) {
 router.get('/', requireLogin, async function (req, res, next) {
   try {
     // Cerca i percorsi nel database
-    const percorsi = await percorso.find();
+    const percorsi = await percorso.find({}, 'nome distanza dislivello tipo');
 
     res.render('percorsi', { title: 'Percorsi', percorsi: percorsi, username: req.session.user })
   } catch (error) {

@@ -12,24 +12,30 @@ const percorso = require('../models/percorso');
 
 router.get('/all', async function(req, res, next) {
   const directoryPath = 'public/gpx'; 
-  let garaDict = {};
 
-  // Leggi il contenuto della directory
-  fs.readdir(directoryPath, (err, files) => {
+  fs.readdir(directoryPath, async (err, files) => {
     if (err) {
       console.error('Errore durante la lettura della directory:', err);
       return;
     }
 
-    // Cicla sulla lista dei file
-    files.forEach((file) => {
+    // Iterate over the list of files
+    for (const file of files) {
       console.log('Nome del file:', file);
       const nomeFile = path.basename(file);
 
-      let garaDict = getGaraData('public/gpx/'+nomeFile);
-      let newgara = new percorso(garaDict);
-      newgara.save();
-    });
+      const garaData = getGaraData('public/gpx/' + nomeFile);
+      const gpxData = fs.readFileSync('public/gpx/' + nomeFile);
+
+      garaData.data = gpxData; // Save GPX file data as Buffer
+
+      try {
+        const newgara = new percorso(garaData);
+        await newgara.save();
+      } catch (error) {
+        console.error('Errore durante il salvataggio nel database:', error);
+      }
+    }
     res.redirect('/');
   });
 });
@@ -96,6 +102,7 @@ function getGaraData(gpxTrack) {
           descrizione: "",
           tipo: "Regionale",
           categoria: "U23 Elite",
+          link: "",
           commenti:[],
         };
     } else {

@@ -40,40 +40,40 @@ block content
               L.marker(mapData[0], { icon: startIcon }).addTo(map);
               L.marker(mapData[mapData.length - 1], { icon: endIcon }).addTo(map);
 
-              // Crea un pulsante come layer personalizzato
-              const buttonLayer = L.control();
+              //- // Crea un pulsante come layer personalizzato
+              //- const buttonLayer = L.control();
 
-              buttonLayer.onAdd = function (map) {
-              const container = L.DomUtil.create('div', 'leaflet-control-button');
+              //- buttonLayer.onAdd = function (map) {
+              //- const container = L.DomUtil.create('div', 'leaflet-control-button');
 
-              // Aggiungi il pulsante HTML
-              container.innerHTML = '<button class="button special small" id="downloadButton">Scarica GPX</button>';
+              //- // Aggiungi il pulsante HTML
+              //- container.innerHTML = '<button class="button special small" id="downloadButton">Scarica GPX</button>';
 
-              // Aggiungi un gestore di eventi al pulsante
-              container.querySelector('#downloadButton').addEventListener('click', () => {
-                  // URL del file GPX da scaricare (sostituisci con il tuo percorso)
-                  console.log("sono in : " + window.location.pathname);
+              //- // Aggiungi un gestore di eventi al pulsante
+              //- container.querySelector('#downloadButton').addEventListener('click', () => {
+              //-     // URL del file GPX da scaricare (sostituisci con il tuo percorso)
+              //-     console.log("sono in : " + window.location.pathname);
 
-                  let percorsoObj = !{JSON.stringify(datiPercorso)};
-                  const gpxFileUrl = percorsoObj.gpxfile.split('public')[1];
-                  console.log(gpxFileUrl);
+              //-     let percorsoObj = !{JSON.stringify(datiPercorso)};
+              //-     const gpxFileUrl = percorsoObj.gpxfile.split('public')[1];
+              //-     console.log(gpxFileUrl);
 
-                  // Crea un elemento <a> per il download
-                  const downloadLink = document.createElement('a');
-                  downloadLink.href = gpxFileUrl;
-                  downloadLink.href = '/';
-                  let  nomePercorso = percorsoObj.nome;
-                  downloadLink.download = nomePercorso + '.gpx'; // Nome del file da scaricare
+              //-     // Crea un elemento <a> per il download
+              //-     const downloadLink = document.createElement('a');
+              //-     downloadLink.href = gpxFileUrl;
+              //-     downloadLink.href = '/';
+              //-     let  nomePercorso = percorsoObj.nome;
+              //-     downloadLink.download = nomePercorso + '.gpx'; // Nome del file da scaricare
 
-                  // Simula un clic sull'elemento <a> per avviare il download
-                  downloadLink.click();
-              });
+              //-     // Simula un clic sull'elemento <a> per avviare il download
+              //-     downloadLink.click();
+              //- });
 
-              return container;
-              };
+              //- return container;
+              //- };
 
-              // Aggiungi il layer del pulsante alla mappa
-              buttonLayer.addTo(map);
+              //- // Aggiungi il layer del pulsante alla mappa
+              //- buttonLayer.addTo(map);
         div(class=`6u$ 12u$(small)`)
           h2 Dettagli della gara
           table.listagara
@@ -107,13 +107,22 @@ block content
                   td
                     strong Categoria:
                     |  #{datiPercorso.categoria}
+                tr  
+                  a(href=`/download/${datiPercorso._id}`, download=`${datiPercorso.nome}.gpx`)
+                    button(type='button') Scarica file GPX
+                tr 
+                  td    
+                    i.fa-solid.fa-ranking-star
+                  td
+                    strong 
+                      a(href=`${datiPercorso.link}`, target="_blank") Ordine d'arrivo 2023
                 //- tr 
                 //-   td 
                 //-     i.fa-download 
                 //-   td 
                 //-     a(href=gpxFileUrl+"/") Scarica il gpx
 
-     
+  
       
     section
       #chart-container(style="width: 90%; height: 300px; margin: 0 auto;")

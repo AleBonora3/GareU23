@@ -254,10 +254,9 @@ function getGaraData(gpxTrack) {
   return retData;
 }
 
-// ...
 
 // Pagina di modifica percorso
-router.get('/editGara/:id', requireLogin, async function (req, res, next) {
+router.get('/mod/:id', requireLogin, async function (req, res, next) {
   try {
     const percorsoId = req.params.id;
     const percorso = await Percorso.findById(percorsoId);
@@ -274,9 +273,8 @@ router.get('/editGara/:id', requireLogin, async function (req, res, next) {
 });
 
 // Elabora il modulo di modifica
-router.post('/editGara/:id', upload.single('gpxfile'), async function (req, res, next) {
+router.post('/mod/:id', upload.single('gpxfile'), async function (req, res, next) {
   const percorsoId = req.params.id;
-  const gpxFile = req.file ? req.file.path : null;
   const { descrizione, tipo, categoria, link } = req.body;
 
   try {
@@ -288,7 +286,6 @@ router.post('/editGara/:id', upload.single('gpxfile'), async function (req, res,
           tipo,
           categoria,
           link,
-          gpxfile: gpxFile || percorso.gpxfile, // Se non è stato fornito un nuovo file, mantieni il vecchio
         },
       },
       { new: true }
@@ -301,6 +298,24 @@ router.post('/editGara/:id', upload.single('gpxfile'), async function (req, res,
   }
 });
 
-// ...
+
+router.get('/download/:id', async function(req, res, next) {
+  try {
+    const gara = await Percorso.findById(req.params.id);
+
+    if (!gara) {
+      return res.status(404).send('File not found');
+    }
+    
+    res.set('Content-Type', 'application/gpx+xml');
+    res.set('Content-Disposition', `attachment; filename=${gara.nome}.gpx`);
+    res.send(gara.data);
+  } catch (error) {
+    console.error('Errore durante il recupero del file dal database:', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
+
+
 
 module.exports = router;

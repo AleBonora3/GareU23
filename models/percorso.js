@@ -10,11 +10,13 @@ const percorsoSchema = new mongoose.Schema({
   categoria: String, //da inserire
   tipo: {
     type: String,
-    enum: ['Regionale', 'Nazionale', 'Internazionale'],
+    enum: ['Regionale', 'Nazionale', 'Internazionale 1.2'],
     default: 'Regionale',
   },
   commenti:[{autore:String, testo:String}],
 //questi vengono inseriti dagli utenti quando utilizzano il sito
-});
   link: String, // Aggiunto il campo "link"
+  data: Buffer,
+});
+
 module.exports = mongoose.model('Percorso', percorsoSchema)
