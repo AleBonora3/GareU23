@@ -34,7 +34,7 @@ function requireLoginHome(req, res, next) {
 }
 
 // Pagina Home
-router.get('/', requireLoginHome,function(req, res, next) {
+router.get('/',function(req, res, next) {
   res.render('homepage', { title: 'Home', messagelog: '', username: req.session.user});
 });
 

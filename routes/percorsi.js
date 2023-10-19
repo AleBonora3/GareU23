@@ -25,7 +25,7 @@ function requireLogin(req, res, next) {
   }
 }
 
-router.get('/', requireLogin, async function (req, res, next) {
+router.get('/', async function (req, res, next) {
   try {
     // Cerca i percorsi nel database
     const percorsi = await percorso.find({}, 'nome distanza dislivello tipo');
@@ -39,7 +39,7 @@ router.get('/', requireLogin, async function (req, res, next) {
 
 
 // Gestisci la richiesta GET per la pagina del percorso
-router.get('/:id', requireLogin, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const percorsoId = req.params.id;
 

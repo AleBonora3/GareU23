@@ -192,17 +192,18 @@ block content
                 
     section.widget
       h2.align-center Commenti
-      form(id="comment-form", action="/percorsi/add-comment", method="post")
-        div(class=`12u$`)
-          input(type="hidden", name="percorsoId", value=datiPercorso._id)
-        div(class=`12u$`)
-          textarea(id="comment", name="comment", placeholder="scrivi qui il tuo commento", required)
-        div(class=`12u$`)
-          ul.actions.align-center
-            li 
-              button(type="submit") Invia Commento
-            li
-              input(type="reset" value="Reset" class="alt")
+      if username
+        form(id="comment-form", action="/percorsi/add-comment", method="post")
+          div(class=`12u$`)
+            input(type="hidden", name="percorsoId", value=datiPercorso._id)
+          div(class=`12u$`)
+            textarea(id="comment", name="comment", placeholder="scrivi qui il tuo commento", required)
+          div(class=`12u$`)
+            ul.actions.align-center
+              li 
+                button(type="submit") Invia Commento
+              li
+                input(type="reset" value="Reset" class="alt")
       ul#comment-list
         each comment in datiPercorso.commenti
           li(id="comment-#{comment._id}")
